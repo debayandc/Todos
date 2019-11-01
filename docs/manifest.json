@@ -1,0 +1,26 @@
+{
+  "name": "Todos",
+  "short_name": "Todos",
+  "theme_color": "rgba(175,47,47,0.15)",
+  "background_color": "#4d4d4d",
+  "display": "fullscreen",
+  "scope": "/",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "todo-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "todo-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}
