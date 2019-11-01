@@ -1,0 +1,245 @@
+ul{
+    list-style-type: none;
+    padding-inline-start: 0px;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: white;
+}
+
+input[type="checkbox" i] {
+    background-color: initial;
+    -webkit-appearance: checkbox;
+    box-sizing: border-box;
+    margin: 3px 3px 3px 4px;
+    padding: 20px;
+    border: initial;
+    padding: initial;
+    /* height: 28px;
+    width: 20px; */
+    cursor: pointer;
+
+        width: 1.3em;
+        height: 1.3em;
+        background-color: white;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 1px solid #ddd;
+        -webkit-appearance: none;
+        outline: none;
+}
+    
+    .checkbox-round:checked {
+        background-color: green;
+    }
+
+.todolist-items{
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: center;
+}
+
+.todolist-container{
+  flex-grow:1;
+}
+  
+  .spanbutton:hover button {
+     display: block;
+  } 
+
+  .input-no-style{
+    font-size: 24px;
+    font-family: inherit;
+    font-weight: inherit;
+    line-height: 50px;
+    color: inherit;
+    text-align: flex-start;
+    background-image:none;
+    background-color:transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: transparent;
+  }
+
+  .input-override{
+    /* width:500px; */
+    border:none;
+  }
+
+  .edit-input-override{
+    border: 1px solid #999;
+    box-shadow: inset 0 -1px 5px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: inherit;
+    flex-grow: 1;
+  }
+
+  .li-style{
+    word-break: break-all;
+    text-align: left;
+    max-width: 475px;
+  }
+
+.footer-fix{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.footer-fix:after{
+  content:" ";
+  display: block;
+  flex-basis:32%;
+}
+
+.completed-count{
+  margin-top:2px;
+  flex-basis:33.33%;
+}
+
+.clear-completed{
+  flex-basis: 30%;
+  text-decoration: dashed underline #999999;
+}
+
+  .clear-completed:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .toggle-all{
+    font-size: 40px;
+    color: #e6e6e6;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    background-color: transparent;
+    transform: rotate(90deg);
+    outline: transparent;
+
+}
+
+.hide{
+  display:none;
+}
+.todo-edit-range{
+  width:475px;
+}
+
+.filters{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-basis: 33.33%;
+}
+
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  color: #666666;
+  background: #999999;
+  color: white;
+}
+
+  .btn {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    bottom: 0;
+    margin: auto 0;
+    font-size: 30px;
+    color: #cc9a9a;
+    transition: color 0.2s ease-out;
+    padding: 0;
+    border: none;
+    background: none;
+    outline: none ;
+}
+
+.form{
+  display: flex;
+  flex-direction: inherit;
+  flex-grow: 1;
+}
+
+@media screen and (min-width:56px) and (max-width:550px) {
+
+  .outer-container {
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+}
+
+  .inner-container {
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+}
+  ul{
+    display: flex;
+    flex-direction: inherit;
+    flex-grow: 1;
+  }
+  .filters{
+    border-top: 2px solid #999999;
+    padding-top: 5px;
+  }
+  .footer-fix{
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .footer-fix div:first-child {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-basis: 33%;
+    order: 1;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .footer-fix div:last-child {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-basis: 66%;
+    order: 2;
+    box-sizing: border-box;
+  }
+  .footer-fix:after{
+    content: " ";
+    order: 2;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-basis: 66%;
+    box-sizing: border-box;
+  }
+
+  .footer-fix div:nth-child(2) {
+    display: flex;
+    flex-direction:row ;
+    flex-basis: 100%;
+    justify-content: space-evenly;
+    order: 3;
+  }
+
+  .input-no-style{
+    font-size: 5vw;
+  }
+
+  .li-style{
+    display: flex;
+    flex-direction: inherit;
+    max-width: 73vw;
+  }
+
+  .btn{
+    font-size: 6vw;
+    margin:0;
+  }
+
+}

@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import AddTodo from "./components/AddTodo";
+import TodoList from "./components/TodoList";
+import { connect } from 'react-redux'
+import { editTodo } from './actions'
+import { getFilteredTodos } from "./components/getFilteredTodos";
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  handleClick = e => {
+    let { todos, editTodo } = this.props;
+    todos.filteredTodos.map(todo => (todo.editing ? editTodo(todo.id) : null));
+  }
+
+  render() {
+    return (
+      <div className="outer-container" onClick={this.handleClick}>
+        <div className="inner-container" onClick={this.handleClick}>
+          <AddTodo />
+          <TodoList />
+        </div>
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  todos: getFilteredTodos(state.todos, state.filter)
+})
+
+const mapDispatchToProps = dispatch => ({
+  editTodo: id => dispatch(editTodo(id))
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
