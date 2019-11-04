@@ -171,13 +171,13 @@ button[disabled]{
 @media screen and (min-width:56px) and (max-width:550px) {
 
   .outer-container {
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
+    height: 100%;
+    width: 100%;
 }
 
   .inner-container {
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
+    height: 100%;
+    width: 100%;
 }
   ul{
     display: flex;
