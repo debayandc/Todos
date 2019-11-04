@@ -1,5 +1,3 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-undef */
 /**
  * Welcome to your Workbox-powered service worker!
  *
@@ -36,6 +34,6 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/index.html"), {
-
-  blacklist: [/^\/_/, /\/[^\/?]+\.[^\/]+$/],
+  
+  blacklist: [/^\/_/,/\/[^\/?]+\.[^\/]+$/],
 });
