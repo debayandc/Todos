@@ -90,6 +90,7 @@ input[type="checkbox" i] {
   flex-wrap: wrap;
   position: sticky;
   bottom: 0;
+  cursor: default;
 }
 
 .footer-fix:after{
