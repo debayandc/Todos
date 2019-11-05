@@ -123,7 +123,7 @@ div{
 
 
 .filters-btn:hover{
-    border-color: lightcoral;
+    border-color: #888;
 }
 
 @media screen and (min-width:320px) and (max-width:550px) {
