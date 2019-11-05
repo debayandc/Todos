@@ -43,7 +43,7 @@ const AddTodo = ({ dispatch, todos }) => {
     }
 
     return (
-        <div onClick={handleClickNoEdit}>
+        <div className="add-todo-sticky" onClick={handleClickNoEdit}>
             <h1>todos</h1>
             <div className="add-todo">
                 <button className="toggle-all" onClick={handleClick}>&#8250;</button>

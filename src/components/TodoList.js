@@ -8,8 +8,7 @@ import "./TodoList.css";
 import EditTodo from "./EditTodo"
 import FilterList from './filterList';
 
-const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
-
+const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, data, props }) => {
     let completedCount = 0, incompletedCount = 0;
     todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : incompletedCount++));
 
@@ -72,7 +71,6 @@ const mapDispatchToProps = dispatch => ({
     deleteTodo: id => dispatch(deleteTodo(id)),
     editTodo: id => dispatch(editTodo(id)),
     update: (id, text) => dispatch(update(id, text))
-
 })
 
 export default connect(

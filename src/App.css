@@ -68,6 +68,12 @@ div{
     -moz-osx-font-smoothing: grayscale;
 }
 
+.add-todo-sticky{
+    position: sticky;
+    top: 0;
+    background: #f5f5f5;
+    z-index: 1;
+}
 .footer{
     color: inherit;
     padding: 3px 7px;
