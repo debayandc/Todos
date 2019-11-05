@@ -10,8 +10,8 @@ import FilterList from './filterList';
 
 const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
 
-    let completedCount = 0;
-    todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : null));
+    let completedCount = 0, incompletedCount = 0;
+    todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : incompletedCount++));
 
     const handleClick = e => {
         todos.filteredTodos.map(todo => (todo.editing ? editTodo(todo.id) : null));
@@ -48,10 +48,15 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                     <div className="add-todo footer-font footer-fix" onClick={handleClick}>
                         <div className="completed-count" > {completedCount} {completedCount > 1 ? " items left" : " item left"}</div>
                         <FilterList />
-                        {completedCount === 0 ?
-                            <div className="clear-completed"
-                                onClick={() => (todos.filteredTodos.map(todo => (deleteTodo(todo.id))))}>
-                                Clear Completed</div> : null}
+                        {incompletedCount !== 0 ?
+                            (completedCount === 0 ?
+                                <div className="clear-completed"
+                                    onClick={() => (todos.filteredTodos.map(todo => (deleteTodo(todo.id))))}>
+                                    Clear Completed</div>
+                                : <div className="clear-completed"
+                                    onClick={() => (todos.filteredTodos.map(todo => (todo.completed ? deleteTodo(todo.id) : null)))}>
+                                    Clear Completed</div>)
+                            : null}
                     </div>
                 </React.Fragment> : null}
         </div>
