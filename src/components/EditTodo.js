@@ -25,6 +25,7 @@ const EditTodo = ({ dispatch, id, placeholder }) => {
         <React.Fragment>
             <form className="form" onSubmit={handleSubmit}>
                 <input
+                    id={id}
                     className="input-no-style edit-input-override"
                     required
                     type="text"

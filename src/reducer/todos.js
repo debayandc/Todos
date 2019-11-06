@@ -34,6 +34,15 @@ const todos = (state = [], action) => {
             let newdata = [...state];
             newdata[action.id].completed = !newdata[action.id].completed;
             return newdata;
+
+        case "DRAG_AND_DROP":
+            let tempState = [...state];
+            let selected = tempState.splice(action.src, 1);
+            tempState.splice(action.dest, 0, selected[0]);
+            for (let i = 0; i < tempState.length; i++) {
+                if (tempState[i].id !== i) tempState[i].id = i;
+            }
+            return tempState;
         default:
             return state
     }

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { toggleTodo, deleteTodo, editTodo, update } from '../actions'
+import { toggleTodo, deleteTodo, editTodo, update, dragndrop } from '../actions'
 import { getFilteredTodos } from "./getFilteredTodos";
 import React from 'react';
 import Todo from './Todo';
@@ -8,8 +8,8 @@ import "./TodoList.css";
 import EditTodo from "./EditTodo"
 import FilterList from './filterList';
 
-const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
-    let completedCount = 0, incompletedCount = 0, data = null;
+const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, dragndrop }) => {
+    let completedCount = 0, incompletedCount = 0;
     todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : incompletedCount++));
 
     const handleClick = e => {
@@ -25,44 +25,44 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
     }
 
     const handleDragStart = (e) => {
-        console.log(e.target.id);
-        e.currentTarget.style.border = "dashed";
-        data = e.dataTransfer.setData("text", e.target.id);
-        console.log(data);
-        e.dataTransfer.effectAllowed = "move";
+        e.dataTransfer.setData("text", e.target.id);
+        e.dataTransfer.dropEffect = "move";
     }
 
-    const onDragOver = (e) => {
-        console.log(e.target);
+    const handleDragOver = e => {
         e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
     }
 
-    const onDragEnd = (e) => {
+    const handleDrop = e => {
         e.preventDefault();
-        data = e.dataTransfer.getData("text");
-        console.log(data);
-        e.dataTransfer.clearData();
-        e.currentTarget.style.border = "";
+        let data = e.dataTransfer.getData("text");
+        let src = Number(data);
+        let dest = Number(e.target.id);
+        dragndrop(src, dest);
     }
 
     return (
         <div className="todolist-container">
             {todos.todos.length ?
                 <React.Fragment>
-                    <ul onClick={handleClick}>
+                    <ul onClick={handleClick}
+
+                    >
                         {todos.filteredTodos.map(todo => (
                             <div
+                                id={todo.id}
                                 className="todolist-items add-todo spanbutton"
                                 onClick={handleClick}
                                 draggable
                                 onDragStart={(e) => handleDragStart(e)}
-                                onDragOverCapture={(e) => onDragOver(e)}
-                                onDragEnd={(e) => onDragEnd(e)}
+                                onDrop={(e) => handleDrop(e)}
+                                onDragOver={(e) => handleDragOver(e)}
                             >
                                 <Checkbox id={todo.id} checked={todo.completed} onClick={() => handleCheckboxClick(todo.id)} />
                                 {todo.editing !== true ?
                                     <span className="todo-edit-range">
-                                        <Todo key={todo.id} {...todo}
+                                        <Todo id={todo.id} key={todo.id} {...todo}
                                             onClick={() => editTodo(todo.id)}
                                         />
                                         <button className="btn" onClick={() => deleteTodo(todo.id)}>&#10005;</button>
@@ -98,7 +98,8 @@ const mapDispatchToProps = dispatch => ({
     toggleTodo: id => dispatch(toggleTodo(id)),
     deleteTodo: id => dispatch(deleteTodo(id)),
     editTodo: id => dispatch(editTodo(id)),
-    update: (id, text) => dispatch(update(id, text))
+    update: (id, text) => dispatch(update(id, text)),
+    dragndrop: (src, dest) => dispatch(dragndrop(src, dest))
 })
 
 export default connect(
