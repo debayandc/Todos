@@ -203,7 +203,7 @@ button[disabled]{
 }
 
   .inner-container {
-    height: max-content;
+    height: 100%;
     width: 100%;
 }
   ul{

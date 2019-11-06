@@ -8,8 +8,8 @@ import "./TodoList.css";
 import EditTodo from "./EditTodo"
 import FilterList from './filterList';
 
-const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, data, props }) => {
-    let completedCount = 0, incompletedCount = 0;
+const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
+    let completedCount = 0, incompletedCount = 0, data = null;
     todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : incompletedCount++));
 
     const handleClick = e => {
@@ -24,13 +24,38 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, data, props }) => {
         });
     }
 
+    const handleDragStart = (e) => {
+        console.log(e.target.id);
+        e.currentTarget.style.border = "dashed";
+        data = e.dataTransfer.setData("text/plain", e.target.id);
+        console.log(data)
+    }
+
+    const onDragOver = (e) => {
+        console.log(e.target);
+        e.preventDefault();
+    }
+
+    const onDragEnd = (e) => {
+        e.preventDefault();
+        data = e.dataTransfer.getData("text");
+        console.log(data);
+    }
+
     return (
         <div className="todolist-container">
             {todos.todos.length ?
                 <React.Fragment>
                     <ul onClick={handleClick}>
                         {todos.filteredTodos.map(todo => (
-                            <span className="todolist-items add-todo spanbutton" onClick={handleClick}>
+                            <div
+                                className="todolist-items add-todo spanbutton"
+                                onClick={handleClick}
+                                draggable
+                                onDragStart={(e) => handleDragStart(e)}
+                                onDragOverCapture={(e) => onDragOver(e)}
+                                onDragEnd={(e) => onDragEnd(e)}
+                            >
                                 <Checkbox id={todo.id} checked={todo.completed} onClick={() => handleCheckboxClick(todo.id)} />
                                 {todo.editing !== true ?
                                     <span className="todo-edit-range">
@@ -40,7 +65,7 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, data, props }) => {
                                         <button className="btn" onClick={() => deleteTodo(todo.id)}>&#10005;</button>
                                     </span>
                                     : <EditTodo key={todo.id} id={todo.id} placeholder={todo.text} />}
-                            </span>
+                            </div>
                         ))
                         }
                     </ul >
