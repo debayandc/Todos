@@ -69,7 +69,8 @@ div{
 }
 
 .add-todo-sticky{
-    position: sticky;
+    position: fixed;
+    width: inherit;
     top: 0px;
     background: #f5f5f5;
     z-index: 1;

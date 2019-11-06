@@ -27,8 +27,9 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
     const handleDragStart = (e) => {
         console.log(e.target.id);
         e.currentTarget.style.border = "dashed";
-        data = e.dataTransfer.setData("text/plain", e.target.id);
-        console.log(data)
+        data = e.dataTransfer.setData("text", e.target.id);
+        console.log(data);
+        e.dataTransfer.effectAllowed = "move";
     }
 
     const onDragOver = (e) => {
@@ -40,6 +41,8 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
         e.preventDefault();
         data = e.dataTransfer.getData("text");
         console.log(data);
+        e.dataTransfer.clearData();
+        e.currentTarget.style.border = "";
     }
 
     return (

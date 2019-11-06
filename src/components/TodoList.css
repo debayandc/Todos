@@ -44,6 +44,7 @@ input[type="checkbox" i] {
 
 .todolist-container{
   flex-grow:1;
+  margin-top: 211px;
 }
   
   .spanbutton:hover button {
@@ -205,6 +206,9 @@ button[disabled]{
   .inner-container {
     height: 100%;
     width: 100%;
+}
+.todolist-container{
+  margin-top: 206px;
 }
   ul{
     display: flex;
