@@ -11,12 +11,6 @@ class App extends Component {
     todos.filteredTodos.map(todo => (todo.editing ? editTodo(todo.id) : null));
   }
 
-  //   handleDnD = (src, dest) => {
-  //     console.log(src, dest);
-  //     onDrop = {(source, dest) => this.handleDnD(source, dest)
-  //   }
-  // }
-
   render() {
     return (
       <div className="outer-container" onClick={this.handleClick}>

@@ -9,7 +9,7 @@ import EditTodo from "./EditTodo"
 import FilterList from './filterList';
 
 const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, dragndrop }) => {
-    let completedCount = 0, incompletedCount = 0;
+    let completedCount = 0, incompletedCount = 0, draggedItemId, draggedItem;
     todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : incompletedCount++));
 
     const handleClick = e => {
@@ -25,13 +25,37 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, dragndrop }) => {
     }
 
     const handleDragStart = (e) => {
-        e.dataTransfer.setData("text", e.target.id);
+        draggedItemId = e.target.id;
+        draggedItem = e.target;
+        draggedItem.style.opacity = 0.4;
+        e.dataTransfer.setData("text", draggedItemId);
         e.dataTransfer.dropEffect = "move";
     }
 
-    const handleDragOver = e => {
+    const onDragEnter = (e) => {
+        e.target.parentElement.parentElement.classList.add('over');
+        // console.log(e.target)
+    }
+
+    const onDragLeave = (e) => {
+        e.stopPropagation();
+        // console.log(e.target)
+        e.target.parentElement.parentElement.classList.remove('over');
+    }
+
+    const handleDragOver = (e, id) => {
         e.preventDefault();
+        // draggedItem.classList.add('hide');
         e.dataTransfer.dropEffect = "move";
+        // e.target.parentElement.parentElement.parentElement.classList.add('over');
+    }
+
+    const onDragEnd = e => {
+        let listItems = document.querySelectorAll('.draggable');
+        [].forEach.call(listItems, function (item) {
+            item.classList.remove('over');
+        });
+        e.target.style.opacity = '1';
     }
 
     const handleDrop = e => {
@@ -46,18 +70,22 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, dragndrop }) => {
         <div className="todolist-container">
             {todos.todos.length ?
                 <React.Fragment>
-                    <ul onClick={handleClick}
+                    <ul className="ul" onClick={handleClick}
 
                     >
                         {todos.filteredTodos.map(todo => (
                             <div
                                 id={todo.id}
-                                className="todolist-items add-todo spanbutton"
+                                text={todo.text}
+                                className="todolist-items add-todo spanbutton draggable"
                                 onClick={handleClick}
                                 draggable
                                 onDragStart={(e) => handleDragStart(e)}
-                                onDrop={(e) => handleDrop(e)}
+                                onDragEnter={e => onDragEnter(e)}
+                                onDragLeave={e => onDragLeave(e)}
+                                onDrop={(e) => handleDrop(e, todo.id)}
                                 onDragOver={(e) => handleDragOver(e)}
+                                onDragEnd={e => onDragEnd(e)}
                             >
                                 <Checkbox id={todo.id} checked={todo.completed} onClick={() => handleCheckboxClick(todo.id)} />
                                 {todo.editing !== true ?

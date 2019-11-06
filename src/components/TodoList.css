@@ -1,4 +1,4 @@
-ul{
+.ul{
     list-style-type: none;
     padding-inline-start: 0px;
     margin-block-start: 0px;
@@ -196,6 +196,29 @@ button[disabled]{
   background: #555; 
 }
 
+.hide{
+  display: none;
+}
+
+.draggable {
+  will-change: transform;
+  cursor: move;
+    transition: all 200ms;
+    position: relative;
+}
+.draggable:after {
+    transition: all 200ms;
+    transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.50);
+  }
+  .draggable:hover:after{
+      opacity: 1;
+      transform: translate(0);
+    }
+
+    .over {
+      transform: perspective(1000px) translate3d(0px, 0px, 20px);
+    }
+
 @media screen and (min-width:56px) and (max-width:550px) {
 
   .outer-container {
@@ -207,7 +230,7 @@ button[disabled]{
     height: 100%;
     width: 100%;
 }
-  ul{
+  .ul{
     display: flex;
     flex-direction: inherit;
     flex-grow: 1;
