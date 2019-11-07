@@ -49,6 +49,7 @@ const AddTodo = ({ dispatch, todos }) => {
                 <button id="toggle-all" className="toggle-all" onClick={handleClick}>&#8250;</button>
                 <form id="form" className="form" onSubmit={event => handleSubmit(event)} >
                     <input
+                        autoComplete="off"
                         id="form-input"
                         className="input-no-style input-override form"
                         required
