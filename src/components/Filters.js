@@ -4,7 +4,7 @@ import { filterType } from '../actions'
 
 const Filters = ({ active, children, onClick }) => {
     return (
-        <button className="filters-btn"
+        <button id="filters-btn" className="filters-btn"
             onClick={onClick}
             disabled={active}
         >

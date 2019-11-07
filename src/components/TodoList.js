@@ -50,15 +50,15 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                         ))
                         }
                     </ul >
-                    <div className="add-todo footer-font footer-fix" onClick={handleClick}>
-                        <div className="completed-count" > {completedCount} {completedCount > 1 ? " items left" : " item left"}</div>
+                    <div id="footer" className="add-todo footer-font footer-fix" onClick={handleClick}>
+                        <div id="completed-count" className="completed-count" > {completedCount} {completedCount > 1 ? " items left" : " item left"}</div>
                         <FilterList />
                         {incompletedCount !== 0 ?
                             (completedCount === 0 ?
-                                <div className="clear-completed"
+                                <div id="clear-completed" className="clear-completed"
                                     onClick={() => (todos.filteredTodos.map(todo => (deleteTodo(todo.id))))}>
                                     Clear Completed</div>
-                                : <div className="clear-completed"
+                                : <div id="clear-completed" className="clear-completed"
                                     onClick={() => (todos.filteredTodos.map(todo => (todo.completed ? deleteTodo(todo.id) : null)))}>
                                     Clear Completed</div>)
                             : null}
