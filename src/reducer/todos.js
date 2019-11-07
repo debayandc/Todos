@@ -26,25 +26,29 @@ const todos = (state = [], action) => {
         case "DELETE_TODO":
             let newState = [...state];
             newState = newState.filter(todo => todo.id !== action.id);
-            for (let i = 0; i < newState.length; i++) {
-                if (newState[i].id !== i) newState[i].id = i;
-            }
+            reorderIds(newState);
             return newState;
         case "TOGGLE_COMPLETED":
             let newdata = [...state];
             newdata[action.id].completed = !newdata[action.id].completed;
             return newdata;
 
-        case "DRAG_AND_DROP":
-            let tempState = [...state];
-            let selected = tempState.splice(action.src, 1);
-            tempState.splice(action.dest, 0, selected[0]);
-            for (let i = 0; i < tempState.length; i++) {
-                if (tempState[i].id !== i) tempState[i].id = i;
-            }
-            return tempState;
+        case "DRAG_ACTION":
+            let newS = [...state];
+            if (action.object !== undefined)
+                newS.splice(action.index, action.method, action.object);
+            else
+                newS.splice(action.index, action.method);
+            reorderIds(newS);
+            return newS;
         default:
             return state
+    }
+}
+
+function reorderIds(state) {
+    for (let i = 0; i < state.length; i++) {
+        if (state[i].id !== i) state[i].id = i;
     }
 }
 

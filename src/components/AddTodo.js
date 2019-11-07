@@ -42,17 +42,14 @@ const AddTodo = ({ dispatch, todos }) => {
         todos.todos.map(todo => (todo.editing ? dispatch(editTodo(todo.id)) : null));
     }
 
-    const onDrop = e => {
-        e.preventDefault();
-    }
-
     return (
-        <div className="add-todo-sticky" onClick={handleClickNoEdit}>
-            <h1>todos</h1>
-            <div className="add-todo">
-                <button className="toggle-all" onClick={handleClick}>&#8250;</button>
-                <form className="form" onSubmit={event => handleSubmit(event)} onDrop={e => onDrop(e)}>
+        <div id="add-todo-sticky" className="add-todo-sticky" onClick={handleClickNoEdit}>
+            <div id="todo-header" className="todo-header">todos</div>
+            <div id="add-todo" className="add-todo">
+                <button id="toggle-all" className="toggle-all" onClick={handleClick}>&#8250;</button>
+                <form id="form" className="form" onSubmit={event => handleSubmit(event)} >
                     <input
+                        id="form-input"
                         className="input-no-style input-override form"
                         required
                         type="text"
@@ -60,7 +57,7 @@ const AddTodo = ({ dispatch, todos }) => {
                         ref={node => (input = node)} />
                 </form>
             </div>
-        </div>
+        </div >
     )
 }
 

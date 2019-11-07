@@ -20,7 +20,7 @@ html{
     height: 100%;
 }
 
-h1{
+.todo-header{
     position: relative;
     width: 100%;
     font-size: 100px;
@@ -30,6 +30,10 @@ h1{
     -webkit-text-rendering: optimizeLegibility;
     -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 div{
@@ -128,7 +132,7 @@ div{
 }
 
 @media screen and (min-width:320px) and (max-width:550px) {
-    h1{
+    .todo-header{
         position: relative;
         width: auto;
     }

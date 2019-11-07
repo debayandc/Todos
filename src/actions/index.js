@@ -37,9 +37,10 @@ export const toggleCompleted = id => ({
     id
 })
 
-export const dragndrop = (src, dest) => ({
-    type: 'DRAG_AND_DROP',
-    src,
-    dest
+export const dragAction = (index, method, object) => ({
+    type: "DRAG_ACTION",
+    index,
+    method,
+    object
 })
 
