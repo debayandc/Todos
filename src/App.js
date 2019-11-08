@@ -40,10 +40,8 @@ class App extends Component {
   handleDragOver = (e, length) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "move";
-    console.log(e.target.id, destination)
     if (e.target.id !== destination) {
       if (!notDroppableClassList(e.target.id)) {
-        console.log("dragover")
         this.props.dragAction(Number(destination), 1);
         if (e.target.id !== "ul") {
           destination = e.target.id;
@@ -58,7 +56,6 @@ class App extends Component {
   }
 
   onDragEnd = e => {
-    console.log("dragend")
     this.props.dragAction(Number(destination), 1, selected);
     let listItems = document.querySelectorAll('.draggable');
     [].forEach.call(listItems, function (item) {

@@ -7,10 +7,12 @@ import Checkbox from "./Checkbox";
 import "./TodoList.css";
 import EditTodo from "./EditTodo"
 import FilterList from './filterList';
+import itemsCalc from "../utils/itemsCalc";
 
 const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
-    let completedCount = 0, incompletedCount = 0;
-    todos.filteredTodos.map(todo => ((!todo.completed) ? completedCount++ : incompletedCount++));
+    let completedCount = 0, incompletedCount = 0, overallCompletedCount = 0, overallIncompletedCount = 0;
+    todos.filteredTodos.map(todo => ((todo.completed) ? completedCount++ : incompletedCount++));
+    todos.todos.map(todo => ((todo.completed) ? overallCompletedCount++ : overallIncompletedCount++));
 
     const handleClick = e => {
         todos.filteredTodos.map(todo => (todo.editing ? editTodo(todo.id) : null));
@@ -32,7 +34,6 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
             return null;
         });
     }
-
     return (
         <div className="todolist-container">
             {todos.todos.length ?
@@ -43,7 +44,6 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                                 id={todo.id}
                                 text={todo.text}
                                 className="todolist-items add-todo spanbutton draggable"
-                                // onDoubleClick={handleDoubleClick}
                                 onClick={handleClick}
                                 draggable
                             >
@@ -62,10 +62,10 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                         }
                     </ul >
                     <div id="footer" className="add-todo footer-font footer-fix" onClick={handleClick}>
-                        <div id="completed-count" className="completed-count" > {completedCount} {completedCount > 1 ? " items left" : " item left"}</div>
+                        {itemsCalc(overallCompletedCount, completedCount, incompletedCount, todos.todos.length)}
                         <FilterList />
-                        {incompletedCount !== 0 ?
-                            (completedCount === 0 ?
+                        {completedCount !== 0 ?
+                            (incompletedCount === 0 ?
                                 <div id="clear-completed" className="clear-completed"
                                     onClick={() => (todos.filteredTodos.map(todo => (deleteTodo(todo.id))))}>
                                     Clear Completed</div>

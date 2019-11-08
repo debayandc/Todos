@@ -250,7 +250,7 @@ button[disabled]{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    flex-basis: 33%;
+    flex-basis: 50%;
     order: 1;
     padding: 10px;
     box-sizing: border-box;
@@ -259,7 +259,7 @@ button[disabled]{
   .footer-fix div:last-child {
     display: flex;
     flex-direction: row-reverse;
-    flex-basis: 66%;
+    flex-basis: 50%;
     order: 2;
     box-sizing: border-box;
   }
