@@ -64,8 +64,6 @@ class App extends Component {
     [].forEach.call(listItems, function (item) {
       item.classList.remove('over');
     });
-    e.target.style.opacity = '1';
-
   }
 
   render() {

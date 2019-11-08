@@ -30,6 +30,7 @@ const EditTodo = ({ dispatch, id, placeholder }) => {
                     required
                     type="text"
                     defaultValue={input}
+                    autoFocus="autofocus"
                     ref={node => (input = node)}
                     onBlur={handleOnBlur}
                 />

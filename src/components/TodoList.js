@@ -24,6 +24,15 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
         });
     }
 
+    const handleTodoClick = id => {
+        todos.filteredTodos.map(todo => {
+            if (id !== todo.id) {
+                if (todo.editing) editTodo(todo.id);
+            }
+            return null;
+        });
+    }
+
     return (
         <div className="todolist-container">
             {todos.todos.length ?
@@ -34,6 +43,7 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                                 id={todo.id}
                                 text={todo.text}
                                 className="todolist-items add-todo spanbutton draggable"
+                                // onDoubleClick={handleDoubleClick}
                                 onClick={handleClick}
                                 draggable
                             >
@@ -41,7 +51,8 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                                 {todo.editing !== true ?
                                     <span className="todo-edit-range">
                                         <Todo id={todo.id} key={todo.id} {...todo}
-                                            onClick={() => editTodo(todo.id)}
+                                            onDoubleClick={() => editTodo(todo.id)}
+                                            onClick={() => handleTodoClick(todo.id)}
                                         />
                                         <button className="btn" onClick={() => deleteTodo(todo.id)}>&#10005;</button>
                                     </span>

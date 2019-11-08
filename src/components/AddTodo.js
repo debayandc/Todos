@@ -45,7 +45,7 @@ const AddTodo = ({ dispatch, todos }) => {
     return (
         <div id="add-todo-sticky" className="add-todo-sticky" onClick={handleClickNoEdit}>
             <div id="todo-header" className="todo-header">todos</div>
-            <div id="add-todo" className="add-todo">
+            <div id="add-todo" className="add-todo" style={{ height: "50px" }}>
                 <button id="toggle-all" className="toggle-all" onClick={handleClick}>&#8250;</button>
                 <form id="form" className="form" onSubmit={event => handleSubmit(event)} >
                     <input

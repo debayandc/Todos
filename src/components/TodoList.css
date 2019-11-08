@@ -44,7 +44,7 @@ input[type="checkbox" i] {
 
 .todolist-container{
   flex-grow:1;
-  margin-top: 206px;
+  margin-top: 203px;
 }
   
   .spanbutton:hover button {
@@ -175,6 +175,7 @@ button[disabled]{
   display: flex;
   flex-direction: inherit;
   flex-grow: 1;
+  height: 50px;
 }
 
 ::-webkit-scrollbar {
@@ -201,23 +202,15 @@ button[disabled]{
 }
 
 .draggable {
-  will-change: transform;
-  cursor: move;
-    transition: all 200ms;
+    cursor: move;
     position: relative;
+    transition: transform .3s ease;
 }
-.draggable:after {
-    transition: all 200ms;
-    transition-timing-function: cubic-bezier(0.48, 0.72, 0.62, 1.50);
-  }
-  .draggable:hover:after{
-      opacity: 1;
-      transform: translate(0);
-    }
-
-    .over {
+.over {
       transform: perspective(1000px) translate3d(0px, 0px, 20px);
-    }
+      transition: transform .3s ease;
+      opacity:0;
+}
 
 @media screen and (min-width:56px) and (max-width:550px) {
 
@@ -229,6 +222,13 @@ button[disabled]{
   .inner-container {
     height: 100%;
     width: 100%;
+}
+.add-todo{
+  width:100%;
+}
+
+.add-todo-sticky{
+  width:100%;
 }
   .ul{
     display: flex;
@@ -285,9 +285,7 @@ button[disabled]{
   }
 
   .li-style{
-    display: flex;
-    flex-direction: inherit;
-    max-width: 73vw;
+     max-width: 73vw;
   }
 
   .btn{
