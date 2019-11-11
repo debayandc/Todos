@@ -24,6 +24,7 @@ const EditTodo = ({ dispatch, id, placeholder }) => {
     return (
         <React.Fragment>
             <form className="form" onSubmit={handleSubmit}>
+                <label for="id" className="label-hidden">Edit</label>
                 <input
                     id={id}
                     className="input-no-style edit-input-override"

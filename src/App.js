@@ -4,7 +4,7 @@ import TodoList from "./components/TodoList";
 import { connect } from 'react-redux'
 import { editTodo, dragAction } from './actions';
 import { notDroppableClassList } from "./utils/classList";
-import { getFilteredTodos } from "./components/getFilteredTodos";
+import { getFilteredTodos } from "./utils/getFilteredTodos";
 
 let selected = null, source = -1, destination = -1;
 class App extends Component {

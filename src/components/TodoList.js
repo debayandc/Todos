@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { toggleTodo, deleteTodo, editTodo, update } from '../actions'
-import { getFilteredTodos } from "./getFilteredTodos";
+import { getFilteredTodos } from "../utils/getFilteredTodos";
 import React from 'react';
 import Todo from './Todo';
 import Checkbox from "./Checkbox";

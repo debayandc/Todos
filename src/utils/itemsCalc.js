@@ -10,9 +10,11 @@ export default function itemsCalc(overallCompletedCount, completedCount, incompl
                     {completedCount} {completedCount > 1 ? " items completed" : " item completed"}
                 </div>)
             : (completedCount ?
-                <div id="completed-count" className="completed-count" >
-                    {completedCount} {completedCount > 1 ? " items completed" : " item completed"}
-                </div>
+                (completedCount === overallCompletedCount ?
+                    <div id="completed-count" className="completed-count" >All items completed</div>
+                    : <div id="completed-count" className="completed-count" >
+                        {completedCount} {completedCount > 1 ? " items completed" : " item completed"}
+                    </div>)
                 : <div id="completed-count" className="completed-count" >
                     {incompletedCount} {incompletedCount > 1 ? " items left" : " item left"}
                 </div>)

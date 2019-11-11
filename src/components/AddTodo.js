@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { addTodo, toggleCompleted, editTodo } from '../actions';
-import { getFilteredTodos } from "./getFilteredTodos";
+import { getFilteredTodos } from "../utils/getFilteredTodos";
 import "../App.css";
 
 const AddTodo = ({ dispatch, todos }) => {
@@ -48,6 +48,7 @@ const AddTodo = ({ dispatch, todos }) => {
             <div id="add-todo" className="add-todo" style={{ height: "50px" }}>
                 <button id="toggle-all" className="toggle-all" onClick={handleClick}>&#8250;</button>
                 <form id="form" className="form" onSubmit={event => handleSubmit(event)} >
+                    <label for="form-input" class="label-hidden">What needs to be done</label>
                     <input
                         autoComplete="off"
                         id="form-input"
