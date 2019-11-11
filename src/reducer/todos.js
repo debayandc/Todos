@@ -2,14 +2,17 @@ const todos = (state = [], action) => {
     switch (action.type) {
         case 'ADD_TODO':
             let id = (state.length === 0) ? 0 : action.id;
-            return [
-                ...state, {
+            let stateNew = [
+                {
                     id: id,
                     text: action.text,
                     completed: false,
                     editing: false
                 },
-            ]
+                ...state
+            ];
+            reorderIds(stateNew);
+            return stateNew;
         case "EDIT_TODO":
             return state.map(todo =>
                 todo.id === action.id ? { ...todo, editing: !todo.editing } : { ...todo, editing: false }
