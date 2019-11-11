@@ -2,7 +2,7 @@
   "name": "Todos",
   "short_name": "Todos",
   "theme_color": "rgba(175,47,47,0.15)",
-  "background_color": "#4d4d4d",
+  "background_color": "#AF2F2F",
   "display": "fullscreen",
   "scope": "/",
   "start_url": ".",
