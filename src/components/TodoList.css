@@ -322,3 +322,15 @@ button[disabled]{
   }
 
 }
+
+@media only screen and (orientation: landscape) and (max-width:1024px) {
+  .todolist-container {
+    margin-top: 0px;
+}
+.todo-header{
+  font-size: 50px;
+}
+.add-todo-sticky{
+  position: relative;
+}
+}
