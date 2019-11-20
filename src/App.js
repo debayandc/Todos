@@ -9,8 +9,18 @@ import { getFilteredTodos } from "./utils/getFilteredTodos";
 let selected = null, source = -1, destination = -1;
 class App extends Component {
 
+  state = {
+    showSidebar: false,
+    showHowToUse: false
+  }
+
   handleClick = e => {
     let { todos, editTodo } = this.props;
+    if (this.state.showSidebar) {
+      this.setState({
+        showSidebar: !this.state.showSidebar
+      })
+    }
     todos.filteredTodos.map(todo => (todo.editing ? editTodo(todo.id) : null));
   }
 
@@ -62,7 +72,29 @@ class App extends Component {
       item.classList.remove('over');
     });
   }
+  handleSidebarnav = (e) => {
+    if (this.state.showHowToUse) {
+      this.setState({
+        showHowToUse: !this.state.showHowToUse
+      })
+    }
+    this.setState({
+      showSidebar: e
+    })
+  }
 
+  handleShowHowToUse = e => {
+    this.setState({
+      showHowToUse: e,
+      showSidebar: !this.state.showSidebar
+    })
+  }
+
+  hideHowToUse = e => {
+    this.setState({
+      showHowToUse: !this.state.showHowToUse
+    })
+  }
   render() {
     return (
       <div id="outer-container" className="outer-container" onClick={this.handleClick}
@@ -73,10 +105,39 @@ class App extends Component {
         onDragEnd={e => this.onDragEnd(e)}
       >
         <div id="inner-container" className="inner-container" onClick={this.handleClick}>
-          <AddTodo />
-          <TodoList />
+          <AddTodo
+            getSidebarval={(e) => this.handleSidebarnav(e)}
+            showSidebar={this.state.showSidebar}
+            showHowToUse={this.state.showHowToUse}
+            getHowToUse={e => this.handleShowHowToUse(e)}
+          />
+          <TodoList
+            getSidebarval={(d) => this.handleSidebarnav(d)}
+            showSidebar={this.state.showSidebar}
+          />
+          {this.state.showHowToUse &&
+            <div className="how-to-use-container">
+              <div className="how-to-use-header">
+                <div
+                  className="hamburger hb2"
+                  onClick={e => this.handleSidebarnav(e)}>&#9776;
+                </div>
+                <div style={{ display: "flex", flexDirection: "row", flexBasis: "90%", justifyContent: "center" }}>
+                  <div style={{
+                    fontSize: "30px", fontWeight: "bold", color: "white", padding: "10px", cursor: "default"
+                  }}>How to use</div>
+                  <div className="question-mark q-mark2">?</div>
+                </div>
+                <button className="btn btn2" onClick={e => this.hideHowToUse(e)}>&#10005;</button>
+              </div>
+              <div className="how-to-use-content">content</div>
+              <button id="filters-btn" className="filters-btn close-btn"
+                onClick={e => this.hideHowToUse(e)}
+              >Close</button>
+            </div>
+          }
         </div>
-      </div>
+      </div >
     );
   }
 }

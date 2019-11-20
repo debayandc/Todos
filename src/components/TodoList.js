@@ -9,7 +9,7 @@ import EditTodo from "./EditTodo"
 import FilterList from './filterList';
 import itemsCalc from "../utils/itemsCalc";
 
-const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
+const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, getSidebarval, showSidebar }) => {
     let completedCount = 0, incompletedCount = 0, overallCompletedCount = 0, overallIncompletedCount = 0;
     todos.filteredTodos.map(todo => ((todo.completed) ? completedCount++ : incompletedCount++));
     todos.todos.map(todo => ((todo.completed) ? overallCompletedCount++ : overallIncompletedCount++));
@@ -34,8 +34,12 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
             return null;
         });
     }
+    const handleSidebar = () => {
+        if (showSidebar)
+            getSidebarval(!showSidebar);
+    }
     return (
-        <div className="todolist-container">
+        <div className="todolist-container" onClick={handleSidebar} style={{ opacity: showSidebar ? 0.4 : 1 }}>
             {todos.todos.length ?
                 <React.Fragment>
                     <ul id="ul" className="ul" onClick={handleClick}>
@@ -45,7 +49,7 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo }) => {
                                 text={todo.text}
                                 className="todolist-items add-todo spanbutton draggable"
                                 onClick={handleClick}
-                                draggable
+                                draggable={!showSidebar}
                             >
                                 <Checkbox id={todo.id} checked={todo.completed} onClick={() => handleCheckboxClick(todo.id)} />
                                 {todo.editing !== true ?
