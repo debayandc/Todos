@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { editTodo, dragAction } from './actions';
 import { notDroppableClassList } from "./utils/classList";
 import { getFilteredTodos } from "./utils/getFilteredTodos";
+import HowToUse from "./components/HowToUse";
 
 let selected = null, source = -1, destination = -1;
 class App extends Component {
@@ -79,23 +80,24 @@ class App extends Component {
       })
     }
     this.setState({
-      showSidebar: e
+      showSidebar: !this.state.showSidebar
     })
   }
 
   handleShowHowToUse = e => {
     this.setState({
-      showHowToUse: e,
+      showHowToUse: !this.state.showHowToUse,
       showSidebar: !this.state.showSidebar
     })
   }
 
   hideHowToUse = e => {
     this.setState({
-      showHowToUse: !this.state.showHowToUse
+      showHowToUse: !this.state.showHowToUse,
     })
   }
   render() {
+    console.log(this.state.showSidebar);
     return (
       <div id="outer-container" className="outer-container" onClick={this.handleClick}
         onDragStart={(e) => this.handleDragStart(e)}
@@ -116,25 +118,10 @@ class App extends Component {
             showSidebar={this.state.showSidebar}
           />
           {this.state.showHowToUse &&
-            <div className="how-to-use-container">
-              <div className="how-to-use-header">
-                <div
-                  className="hamburger hb2"
-                  onClick={e => this.handleSidebarnav(e)}>&#9776;
-                </div>
-                <div style={{ display: "flex", flexDirection: "row", flexBasis: "90%", justifyContent: "center" }}>
-                  <div style={{
-                    fontSize: "30px", fontWeight: "bold", color: "white", padding: "10px", cursor: "default"
-                  }}>How to use</div>
-                  <div className="question-mark q-mark2">?</div>
-                </div>
-                <button className="btn btn2" onClick={e => this.hideHowToUse(e)}>&#10005;</button>
-              </div>
-              <div className="how-to-use-content">content</div>
-              <button id="filters-btn" className="filters-btn close-btn"
-                onClick={e => this.hideHowToUse(e)}
-              >Close</button>
-            </div>
+            <HowToUse
+              handleSidebarnav={e => this.handleSidebarnav(e)}
+              hideHowToUse={e => this.hideHowToUse(e)}
+            />
           }
         </div>
       </div >

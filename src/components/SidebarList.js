@@ -11,7 +11,7 @@ const SidebarList = ({ showHowToUse, getHowToUse }) => {
     return (
         <React.Fragment>
             <div className="how-to-use" onClick={toggleHowToUse}>
-                <div>How to use </div>
+                <div style={{ fontSize: "15px" }}>How to use </div>
                 <div className="question-mark">?</div>
             </div>
         </React.Fragment>

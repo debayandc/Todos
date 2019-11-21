@@ -121,6 +121,13 @@ html{
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    align-items: flex-start;
+}
+.instructions{
+    align-self: flex-start;
+    padding: 10px 20px 20px 0px;
+    text-align: justify;
+    font-size: 20px;
 }
 
 div{
