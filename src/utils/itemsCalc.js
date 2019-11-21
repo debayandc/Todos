@@ -4,7 +4,7 @@ export default function itemsCalc(overallCompletedCount, completedCount, incompl
         overallCompletedCount < length ?
             (incompletedCount ?
                 <div id="completed-count" className="completed-count" >
-                    {incompletedCount} {incompletedCount > 1 ? " items left" : " item left"}
+                    {incompletedCount} {incompletedCount > 1 ? " items pending" : " item pending"}
                 </div>
                 : <div id="completed-count" className="completed-count" >
                     {completedCount} {completedCount > 1 ? " items completed" : " item completed"}
@@ -16,7 +16,7 @@ export default function itemsCalc(overallCompletedCount, completedCount, incompl
                         {completedCount} {completedCount > 1 ? " items completed" : " item completed"}
                     </div>)
                 : <div id="completed-count" className="completed-count" >
-                    {incompletedCount} {incompletedCount > 1 ? " items left" : " item left"}
+                    {incompletedCount} {incompletedCount > 1 ? " items pending" : " item pending"}
                 </div>)
     )
 }

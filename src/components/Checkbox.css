@@ -68,3 +68,9 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+  @media screen and (min-width:56px) and (max-width:550px) {
+    .container{
+      cursor: default;
+    }
+  }

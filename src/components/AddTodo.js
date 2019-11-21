@@ -5,10 +5,11 @@ import { getFilteredTodos } from "../utils/getFilteredTodos";
 import Hamburger from "./Hamburger";
 import "../App.css";
 
-const AddTodo = ({ dispatch, todos, getSidebarval, showSidebar, getHowToUse, showHowToUse }) => {
+const AddTodo = ({ dispatch, todos, getSidebarval, showSidebar }) => {
     let input, count = 0;
     let [showBar, setshowBar] = useState(showSidebar);
     let id = (todos.todos.length === undefined) ? 0 : todos.todos.length;
+
     const handleSubmit = event => {
         event.preventDefault()
         if (!input.value.trim()) {

@@ -88,12 +88,12 @@ input[type="checkbox" i] {
   color:white;
   background-color: rgb(134, 56, 56);
   margin-left:5px;
-  width:18px;
-  height:18px;
-  line-height: 18px;
+  width:20px;
+  height:20px;
+  line-height: 20px;
   display:inline-block;
   border-radius:100%;
-  font-size:12px;
+  font-size:20px;
   text-align:center;
   text-decoration:none;
   -webkit-box-shadow: inset -1px -1px 1px 0px rgba(0,0,0,0.25);
@@ -394,6 +394,13 @@ button[disabled]{
 .placeholder-div{
   flex-basis:20%;
 }
+.sidebar-ul-li{
+  cursor:default;
+}
+
+.sidebar-ul-li-ul-li{
+  cursor:default;
+}
 
 }
 
@@ -419,9 +426,6 @@ button[disabled]{
   height:13vh;
 }
 
-.sidebar-options{
-  
-}
 .add-todo-sticky{
   position: relative;
 }
