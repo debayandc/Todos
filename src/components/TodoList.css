@@ -266,6 +266,13 @@ button[disabled]{
       opacity:0;
 }
 
+.hamburger{
+    display: inline-block;
+    cursor: pointer;
+    align-self: center;
+    color: rgb(134, 56, 56);
+}
+
 .hb2{
   color: white;
     font-size: 30px;

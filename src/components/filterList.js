@@ -2,11 +2,11 @@ import React from 'react'
 import Filters from './Filters'
 import { filters } from "../constants/filters"
 
-const FilterList = () => (
+const FilterList = ({ showSidebar }) => (
     <div id="filters" className="filters">
-        <Filters filter={filters.SHOW_ALL}>All</Filters>
-        <Filters filter={filters.SHOW_ACTIVE}>Active</Filters>
-        <Filters filter={filters.SHOW_COMPLETED}>Completed</Filters>
+        <Filters showSidebar={showSidebar} filter={filters.SHOW_ALL}>All</Filters>
+        <Filters showSidebar={showSidebar} filter={filters.SHOW_ACTIVE}>Active</Filters>
+        <Filters showSidebar={showSidebar} filter={filters.SHOW_COMPLETED}>Completed</Filters>
     </div>
 )
 

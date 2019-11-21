@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { filterType } from '../actions'
 
-const Filters = ({ active, children, onClick }) => {
+const Filters = ({ active, children, onClick, showSidebar }) => {
     return (
         <button id="filters-btn" className="filters-btn"
-            onClick={onClick}
+            onClick={!showSidebar ? onClick : null}
             disabled={active}
         >
             {children}

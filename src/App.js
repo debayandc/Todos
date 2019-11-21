@@ -6,6 +6,7 @@ import { editTodo, dragAction } from './actions';
 import { notDroppableClassList } from "./utils/classList";
 import { getFilteredTodos } from "./utils/getFilteredTodos";
 import HowToUse from "./components/HowToUse";
+import Sidebar from "./components/Sidebar";
 
 let selected = null, source = -1, destination = -1;
 class App extends Component {
@@ -96,8 +97,11 @@ class App extends Component {
       showHowToUse: !this.state.showHowToUse,
     })
   }
+
+  onClickOpenSidebar = e => {
+    e.stopPropagation();
+  }
   render() {
-    console.log(this.state.showSidebar);
     return (
       <div id="outer-container" className="outer-container" onClick={this.handleClick}
         onDragStart={(e) => this.handleDragStart(e)}
@@ -107,6 +111,13 @@ class App extends Component {
         onDragEnd={e => this.onDragEnd(e)}
       >
         <div id="inner-container" className="inner-container" onClick={this.handleClick}>
+          {this.state.showSidebar ?
+            <Sidebar
+              onClick={e => this.onClickOpenSidebar(e)}
+              showHowToUse={this.state.showHowToUse}
+              getHowToUse={e => this.handleShowHowToUse(e)}
+            />
+            : null}
           <AddTodo
             getSidebarval={(e) => this.handleSidebarnav(e)}
             showSidebar={this.state.showSidebar}

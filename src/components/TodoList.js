@@ -55,10 +55,10 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, getSidebarval, show
                                 {todo.editing !== true ?
                                     <span className="todo-edit-range">
                                         <Todo id={todo.id} key={todo.id} {...todo}
-                                            onDoubleClick={() => editTodo(todo.id)}
-                                            onClick={() => handleTodoClick(todo.id)}
+                                            onDoubleClick={() => !showSidebar ? editTodo(todo.id) : null}
+                                            onClick={() => !showSidebar ? handleTodoClick(todo.id) : null}
                                         />
-                                        <button className="btn" onClick={() => deleteTodo(todo.id)}>&#10005;</button>
+                                        <button className="btn" onClick={() => !showSidebar ? deleteTodo(todo.id) : null}>&#10005;</button>
                                     </span>
                                     : <EditTodo key={todo.id} id={todo.id} placeholder={todo.text} />}
                             </div>
@@ -67,14 +67,14 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, getSidebarval, show
                     </ul >
                     <div id="footer" className="add-todo footer-font footer-fix" onClick={handleClick}>
                         {itemsCalc(overallCompletedCount, completedCount, incompletedCount, todos.todos.length)}
-                        <FilterList />
+                        <FilterList showSidebar={showSidebar} />
                         {completedCount !== 0 ?
                             (incompletedCount === 0 ?
                                 <div id="clear-completed" className="clear-completed"
-                                    onClick={() => (todos.filteredTodos.map(todo => (deleteTodo(todo.id))))}>
+                                    onClick={() => !showSidebar ? (todos.filteredTodos.map(todo => (deleteTodo(todo.id)))) : null}>
                                     Clear Completed</div>
                                 : <div id="clear-completed" className="clear-completed"
-                                    onClick={() => (todos.filteredTodos.map(todo => (todo.completed ? deleteTodo(todo.id) : null)))}>
+                                    onClick={() => !showSidebar ? (todos.filteredTodos.map(todo => (todo.completed ? deleteTodo(todo.id) : null))) : null}>
                                     Clear Completed</div>)
                             : null}
                     </div>
