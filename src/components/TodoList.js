@@ -39,10 +39,10 @@ const TodoList = ({ todos, toggleTodo, deleteTodo, editTodo, getSidebarval, show
             getSidebarval(!showSidebar);
     }
     return (
-        <div className="todolist-container" onClick={handleSidebar} style={{ opacity: showSidebar ? 0.4 : 1 }}>
+        <div className="todolist-container" onClick={handleSidebar} style={{ opacity: showSidebar ? 0.4 : 1, overflow: showSidebar ? "hidden" : null }}>
             {todos.todos.length ?
                 <React.Fragment>
-                    <ul id="ul" className="ul" onClick={handleClick}>
+                    <ul id="ul" className="ul" onClick={handleClick} style={{}}>
                         {todos.filteredTodos.map(todo => (
                             <div
                                 id={todo.id}

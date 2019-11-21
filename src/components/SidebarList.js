@@ -14,6 +14,25 @@ const SidebarList = ({ showHowToUse, getHowToUse }) => {
                 <div style={{ fontSize: "15px" }}>How to use </div>
                 <div className="question-mark">?</div>
             </div>
+            <div>Active List
+                <li>qwerty</li>
+            </div>
+            <div>Pending Lists
+                <li>qwerty</li>
+                <li>asdfgh</li>
+            </div>
+            <div>Completed Lists
+                <li>poiuytr</li>
+                <li>lkjhgf</li>
+                <li>mnbvcx</li>
+            </div>
+            <div>All Lists
+                <li>qwerty</li>
+                <li>asdfgh</li>
+                <li>poiuytr</li>
+                <li>lkjhgf</li>
+                <li>mnbvcx</li>
+            </div>
         </React.Fragment>
     );
 }
