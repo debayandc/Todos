@@ -111,13 +111,13 @@ class App extends Component {
         onDragEnd={e => this.onDragEnd(e)}
       >
         <div id="inner-container" className="inner-container" onClick={this.handleClick}>
-          {this.state.showSidebar ?
-            <Sidebar
-              onClick={e => this.onClickOpenSidebar(e)}
-              showHowToUse={this.state.showHowToUse}
-              getHowToUse={e => this.handleShowHowToUse(e)}
-            />
-            : null}
+          <Sidebar
+            className={this.state.showSidebar ? "open" : ""}
+            Sidebar={this.state.showSidebar}
+            onClick={e => this.onClickOpenSidebar(e)}
+            showHowToUse={this.state.showHowToUse}
+            getHowToUse={e => this.handleShowHowToUse(e)}
+          />
           <AddTodo
             getSidebarval={(e) => this.handleSidebarnav(e)}
             showSidebar={this.state.showSidebar}
@@ -128,12 +128,11 @@ class App extends Component {
             getSidebarval={(d) => this.handleSidebarnav(d)}
             showSidebar={this.state.showSidebar}
           />
-          {this.state.showHowToUse &&
-            <HowToUse
-              handleSidebarnav={e => this.handleSidebarnav(e)}
-              hideHowToUse={e => this.hideHowToUse(e)}
-            />
-          }
+          <HowToUse
+            className={this.state.showHowToUse ? "open" : ""}
+            handleSidebarnav={e => this.handleSidebarnav(e)}
+            hideHowToUse={e => this.hideHowToUse(e)}
+          />
         </div>
       </div >
     );

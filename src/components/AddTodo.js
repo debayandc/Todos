@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { addTodo, toggleCompleted, editTodo } from '../actions';
 import { getFilteredTodos } from "../utils/getFilteredTodos";
 import Hamburger from "./Hamburger";
-import "../App.css";
+import "../App.scss";
 
 const AddTodo = ({ dispatch, todos, getSidebarval, showSidebar }) => {
     let input, count = 0;

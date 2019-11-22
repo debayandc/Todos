@@ -59,6 +59,11 @@ html{
     background-color: white;
     box-sizing: border-box;
     box-shadow: 5px 0px 10px gray;
+    transition: top 0.3s ease;
+    top:-101%;  
+    &.open{
+      top: 0%;
+    }
 }
 
 .sidebar-header{
@@ -106,6 +111,7 @@ html{
     display: flex;
     flex-direction: column;
     width: inherit;
+    position: relative;
     padding: 10px;
     align-items: flex-start;
     font-size: 20px;
@@ -117,6 +123,14 @@ html{
     font-weight: normal;
     text-align: justify;
     cursor: pointer;
+    position: absolute;
+    max-height:0;
+    overflow: hidden;
+    &.open{
+      max-height: 100%;
+      transition: max-height 0.3s ease-in;
+      position: relative;
+    }
 }
 
 .sidebar-footer{
@@ -134,12 +148,16 @@ html{
         z-index: 11;
         position: fixed;
         width:inherit;
-        bottom:0;
         height:100%;
         display: flex;
         flex-direction: column;
         background-color: white;
         box-sizing: border-box;
+        transition: top 0.3s ease;
+        top:101%;
+        &.open{
+            top:0%
+        }
 }
 .how-to-use-header{
     display: flex;

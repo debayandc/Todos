@@ -4,7 +4,7 @@ import { getFilteredTodos } from "../utils/getFilteredTodos";
 import React from 'react';
 import Todo from './Todo';
 import Checkbox from "./Checkbox";
-import "./TodoList.css";
+import "./TodoList.scss";
 import EditTodo from "./EditTodo"
 import FilterList from './filterList';
 import itemsCalc from "../utils/itemsCalc";

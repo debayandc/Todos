@@ -390,7 +390,14 @@ button[disabled]{
 
 .sidebar-menu{
   width:70%;
+  transition: left 0.3s ease;
+  left:-100%;
+  top:auto;
+  &.open{
+    left:0;
+  }
 }
+
 .placeholder-div{
   flex-basis:20%;
 }

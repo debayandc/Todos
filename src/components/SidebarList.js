@@ -1,31 +1,30 @@
 import React, { useState } from 'react';
 
-const SidebarList = ({ showHowToUse, getHowToUse, showListStates, getShowListStates }) => {
+const SidebarList = ({ showHowToUse, getHowToUse, showListStates, getShowListStates, Sidebar }) => {
     let [showHowToUsePage, setshowHowToUsePage] = useState(showHowToUse);
-    let [showList, setShowList] = useState(showListStates);
+    let openList = "sidebar-ul-li-ul-li open", closeList = "sidebar-ul-li-ul-li";
     const toggleHowToUse = e => {
         e.preventDefault();
         setshowHowToUsePage(!showHowToUsePage);
         getHowToUse(!showHowToUsePage);
     }
-
+    // console.log("child", showListStates)
     const handleListClosure = e => {
         e.preventDefault();
         if (e.target.id === "sidebar-ul") {
-            setShowList([false, false, false, false]);
+            getShowListStates([true, false, false, false]);
         }
     }
 
     const showListOnClick = e => {
         e.preventDefault();
         switch (e.target.id) {
-            case "act-li": setShowList([true, false, false, false]); break;
-            case "pend-li": setShowList([false, true, false, false]); break;
-            case "comp-li": setShowList([false, false, true, false]); break;
-            case "all-li": setShowList([false, false, false, true]); break;
+            case "act-li": getShowListStates([true, false, false, false]); break;
+            case "pend-li": getShowListStates([false, true, false, false]); break;
+            case "comp-li": getShowListStates([false, false, true, false]); break;
+            case "all-li": getShowListStates([false, false, false, true]); break;
             default: break;
         }
-        getShowListStates(showList);
     }
     return (
         <ul id="sidebar-ul" className="sidebar-ul" onClick={handleListClosure}>
@@ -36,45 +35,37 @@ const SidebarList = ({ showHowToUse, getHowToUse, showListStates, getShowListSta
 
             <li id="act-li" className="sidebar-ul-li" onClick={showListOnClick}>
                 Active List
-                {showList[0] ?
-                    <ul>
-                        <li className="sidebar-ul-li-ul-li">qwerty</li>
-                    </ul>
-                    : null}
+                    <ul className={Sidebar && showListStates[0] ? openList : closeList}>
+                    <li >qwerty</li>
+                </ul>
             </li>
 
             <li id="pend-li" className="sidebar-ul-li" onClick={showListOnClick}>
                 Pending Lists
-                {showList[1] ?
-                    <ul>
-                        <li className="sidebar-ul-li-ul-li">qwerty</li>
-                        <li className="sidebar-ul-li-ul-li">asdfgh</li>
-                    </ul>
-                    : null}
+                    <ul className={Sidebar && showListStates[1] ? openList : closeList}>
+                    <li >qwerty</li>
+                    <li >asdfgh</li>
+                </ul>
             </li>
 
             <li id="comp-li" className="sidebar-ul-li" onClick={showListOnClick}>
                 Completed Lists
-                {showList[2] ?
-                    <ul>
-                        <li className="sidebar-ul-li-ul-li">poiuytr</li>
-                        <li className="sidebar-ul-li-ul-li">lkjhgf</li>
-                        <li className="sidebar-ul-li-ul-li">mnbvcx</li>
-                    </ul>
-                    : null}
+                    <ul className={Sidebar && showListStates[2] ? openList : closeList}>
+                    <li >poiuytr</li>
+                    <li >lkjhgf</li>
+                    <li >mnbvcx</li>
+                </ul>
             </li>
 
             <li id="all-li" className="sidebar-ul-li" onClick={showListOnClick}>
                 All Lists
-                {showList[3] ?
-                    <ul>
-                        <li className="sidebar-ul-li-ul-li">qwerty</li>
-                        <li className="sidebar-ul-li-ul-li">asdfgh</li>
-                        <li className="sidebar-ul-li-ul-li">poiuytr</li>
-                        <li className="sidebar-ul-li-ul-li">lkjhgf</li>
-                        <li className="sidebar-ul-li-ul-li">mnbvcx</li>
-                    </ul>
-                    : null}
+                    <ul className={Sidebar && showListStates[3] ? openList : closeList}>
+                    <li >qwerty</li>
+                    <li >asdfgh</li>
+                    <li >poiuytr</li>
+                    <li >lkjhgf</li>
+                    <li >mnbvcx</li>
+                </ul>
             </li>
         </ul>
     );

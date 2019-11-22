@@ -1,7 +1,7 @@
 import React from 'react';
-const HowToUse = ({ handleSidebarnav, hideHowToUse }) => {
+const HowToUse = ({ handleSidebarnav, hideHowToUse, className }) => {
     return (
-        <div className="how-to-use-container">
+        <div className={"how-to-use-container " + className}>
             <div className="how-to-use-header">
                 <div
                     className="hamburger hb2"
